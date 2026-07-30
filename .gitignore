@@ -14,7 +14,10 @@ jspm_packages/
 .npm   
 # Optional eslint cache
 .eslintcache
-
+.claude
+.agents
+.windsurf
 # typescript
 *.tsbuildinfo
 /src/config/seed_posts.ts
+/src/generated/prisma
