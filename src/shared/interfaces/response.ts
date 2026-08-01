@@ -1,4 +1,4 @@
-export function successResponse<T>(message = "", data: T) {
+export function successResponse<T>(message = "", data?: T) {
     return {
         success: true,
         error: null,
