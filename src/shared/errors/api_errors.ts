@@ -42,11 +42,18 @@ class InsufficientPermissions extends ApiError {
     }
 }
 
+class ConflictError extends ApiError {
+       constructor(message?: string) {
+        super(StatusCodes.CONFLICT, message || "Conflict issue");
+    }
+}
+
 export {
     ApiError,
     InvalidCredentialError,
     UnauthenticatedError,
     InvalidAccessToken,
     NotFoundError,
-    InsufficientPermissions
+    InsufficientPermissions,
+    ConflictError,
 }
