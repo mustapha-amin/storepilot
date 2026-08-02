@@ -27,11 +27,17 @@ export async function fetchProductCategories() {
 }
 
 export async function fetchCategoryByID(id: string) {
-    return await prisma.productCategory.findUnique({
+    const category = await prisma.productCategory.findUnique({
         where: {
             id
         }
     })
+
+    if (!category) {
+        throw new NotFoundError("Category not found")
+    }
+
+    return category
 }
 
 export async function deleteProductCategory(id: string) {
@@ -64,6 +70,8 @@ export async function deleteProductCategory(id: string) {
 }
 
 export async function updateProductCategory(id: string, name: string) {
+    await fetchCategoryByID(id)
+
     return await prisma.productCategory.update({
         where: {
             id
@@ -95,11 +103,17 @@ export async function fetchProducts() {
 }
 
 export async function fetchProductByID(id: string) {
-    return await prisma.product.findUnique({
+    const product = await prisma.product.findUnique({
         where: {
             id
         }
     })
+
+    if (!product) {
+        throw new NotFoundError("Product not found")
+    }
+
+    return product
 }
 
 export async function fetchProductsByCategoryID(id: string) {
