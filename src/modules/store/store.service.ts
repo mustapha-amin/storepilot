@@ -14,9 +14,9 @@ export async function fetchProductCategories() {
         include: {
             _count: {
                 select: {
-                    products: true
+                    products:true
                 }
-            }
+            },
         }
     })
 
@@ -70,8 +70,10 @@ export async function deleteProductCategory(id: string) {
 }
 
 export async function updateProductCategory(id: string, name: string) {
-    await fetchCategoryByID(id)
-
+    const category = await fetchCategoryByID(id)
+    if (!category) {
+        throw new NotFoundError("Category not found")
+    }
     return await prisma.productCategory.update({
         where: {
             id
