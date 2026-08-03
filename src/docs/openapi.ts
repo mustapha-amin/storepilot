@@ -13,6 +13,10 @@ const options: swaggerJSDoc.Options = {
                 url: "http://localhost:5000",
                 description: "Development Server",
             },
+             {
+                url: "https://storepilot-24jg.onrender.com",
+                description: "Production Server",
+            },
         ],
     },
     // This tells swagger-jsdoc where to find the annotations we just wrote
