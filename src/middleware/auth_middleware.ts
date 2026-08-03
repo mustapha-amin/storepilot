@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
-import { UnauthenticatedError, InvalidAccessToken, ApiError } from "../shared/errors/api_errors";
-import { verifyAccessToken } from "../utils/token_helpers";
+import { UnauthenticatedError, InvalidAccessToken, ApiError } from "../shared/errors/api_errors.js";
+import { verifyAccessToken } from "../utils/token_helpers.js";
 
 export async function authMiddleware(req: Request, res: Response, next: NextFunction) {
    const authHeader = req.headers.authorization;

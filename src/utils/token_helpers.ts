@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
-import { ACCESS_SECRET, ACCESS_EXPIRES_IN, REFRESH_EXPIRES_IN, REFRESH_SECRET } from "../config/env";
-import { Token } from "../shared/interfaces/tokens";
-import { InvalidAccessToken } from "../shared/errors/api_errors";
+import { ACCESS_SECRET, ACCESS_EXPIRES_IN, REFRESH_EXPIRES_IN, REFRESH_SECRET } from "../config/env.js";
+import { Token } from "../shared/interfaces/tokens.js";
+import { InvalidAccessToken } from "../shared/errors/api_errors.js";
 
 export interface AuthPayload {
     userId:string, 

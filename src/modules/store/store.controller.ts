@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
-import * as storeService from "./store.service";
-import { CreateCategoryDto, CreateProductDto, UpdateProductDto } from "./store.dto";
-import { successResponse } from "../../shared/interfaces/response";
+import * as storeService from "./store.service.js";
+import { CreateCategoryDto, CreateProductDto, UpdateProductDto } from "./store.dto.js";
+import { successResponse } from "../../shared/interfaces/response.js";
 
 export async function createCategory(req: Request, res: Response) {
     const data = req.body as CreateCategoryDto;

@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-import { ApiError } from "../shared/errors/api_errors";
-import { pinoLogger } from "../utils/logger";
+import { ApiError } from "../shared/errors/api_errors.js";
+import { pinoLogger } from "../utils/logger.js";
 import { ZodError } from "zod";
 
 export function errorHandler(err: ApiError | Error, req: Request, res: Response, next: NextFunction) {

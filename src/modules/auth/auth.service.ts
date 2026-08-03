@@ -1,8 +1,8 @@
-import { prisma } from "../../shared/db/prisma";
-import { InvalidAccessToken, InvalidCredentialError } from "../../shared/errors/api_errors";
+import { prisma } from "../../shared/db/prisma.js";
+import { InvalidAccessToken, InvalidCredentialError } from "../../shared/errors/api_errors.js";
 import bcrypt from "bcrypt";
-import { addDays } from "../../utils/date_helper";
-import { generateTokens, verifyRefreshToken } from "../../utils/token_helpers";
+import { addDays } from "../../utils/date_helper.js";
+import { generateTokens, verifyRefreshToken } from "../../utils/token_helpers.js";
 
 export async function createUser(name: string, email: string, password: string) {
     const user = await prisma.user.findUnique({

@@ -1,7 +1,7 @@
-import { ProductCategory } from "../../generated/prisma/client";
-import { prisma } from "../../shared/db/prisma";
-import { ConflictError, NotFoundError } from "../../shared/errors/api_errors";
-import { CreateCategoryDto, CreateProductDto, UpdateProductDto } from "./store.dto";
+import { ProductCategory } from "../../generated/prisma/client.js";
+import { prisma } from "../../shared/db/prisma.js";
+import { ConflictError, NotFoundError } from "../../shared/errors/api_errors.js";
+import { CreateCategoryDto, CreateProductDto, UpdateProductDto } from "./store.dto.js";
 
 export async function createCategory(data: CreateCategoryDto) {
     return await prisma.productCategory.create({

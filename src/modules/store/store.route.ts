@@ -11,8 +11,8 @@ import {
     fetchProductsByCategoryID,
     updateProduct,
     updateProductCategory,
-} from "./store.controller";
-import { authMiddleware } from "../../middleware/auth_middleware";
+} from "./store.controller.js";
+import { authMiddleware } from "../../middleware/auth_middleware.js";
 
 /**
  * @swagger

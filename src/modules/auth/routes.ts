@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { login, logout, refresh, register } from "./auth.controller";
-import { authMiddleware } from "../../middleware/auth_middleware";
+import { login, logout, refresh, register } from "./auth.controller.js";
+import { authMiddleware } from "../../middleware/auth_middleware.js";
 
 /**
  * @swagger

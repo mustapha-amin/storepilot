@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { createUserSchema, loginUserSchema } from "./auth.validator";
-import { UnauthenticatedError } from "../../shared/errors/api_errors";
-import { createUser, loginUser, logoutUser, refreshToken } from "./auth.service";
+import { createUserSchema, loginUserSchema } from "./auth.validator.js";
+import { UnauthenticatedError } from "../../shared/errors/api_errors.js";
+import { createUser, loginUser, logoutUser, refreshToken } from "./auth.service.js";
 import { StatusCodes } from "http-status-codes";
-import { errorResponse, successResponse } from "../../shared/interfaces/response";
+import { errorResponse, successResponse } from "../../shared/interfaces/response.js";
 
 export async function login(req: Request, res: Response) {
     const inputs = loginUserSchema.parse(req.body);
