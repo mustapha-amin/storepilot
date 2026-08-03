@@ -20,7 +20,7 @@ const options: swaggerJSDoc.Options = {
         ],
     },
     // This tells swagger-jsdoc where to find the annotations we just wrote
-    apis: ["./src/modules/**/*.ts"],
+    apis: ["./src/modules/**/*.ts", "./src/app.ts"],
 };
 
 export const openApiSpec = swaggerJSDoc(options);

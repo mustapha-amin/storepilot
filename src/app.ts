@@ -20,6 +20,21 @@ app.get("/docs", (_, res) => {
     res.type("html").send(getSwaggerHtml())
 })
 
+/**
+ * @swagger
+ * /health:
+ *   get:
+ *     summary: Health check
+ *     description: Returns a simple message to confirm the server is running.
+ *     tags: [Health]
+ *     responses:
+ *       200:
+ *         description: Server is healthy
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/SuccessResponse'
+ */
 app.get("/health", (_, res) => {
     res.status(StatusCodes.OK).json(successResponse("Hello from server", null));
 })
