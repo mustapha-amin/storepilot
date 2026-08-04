@@ -393,6 +393,21 @@ storeRouter.post("/products", createProduct);
  *                       type: array
  *                       items:
  *                         $ref: '#/components/schemas/Product'
+ *                     pagination:
+ *                       type: object
+ *                       properties:
+ *                         page:
+ *                           type: integer
+ *                           example: 1
+ *                         limit:
+ *                           type: integer
+ *                           example: 10
+ *                         total:
+ *                           type: integer
+ *                           example: 42
+ *                         totalPages:
+ *                           type: integer
+ *                           example: 5
  *       401:
  *         description: Unauthorized
  *         content:
@@ -493,6 +508,21 @@ storeRouter.get("/products/:id", fetchProductByID);
  *                       type: array
  *                       items:
  *                         $ref: '#/components/schemas/Product'
+ *                     pagination:
+ *                       type: object
+ *                       properties:
+ *                         page:
+ *                           type: integer
+ *                           example: 1
+ *                         limit:
+ *                           type: integer
+ *                           example: 10
+ *                         total:
+ *                           type: integer
+ *                           example: 42
+ *                         totalPages:
+ *                           type: integer
+ *                           example: 5
  *       401:
  *         description: Unauthorized
  *         content:

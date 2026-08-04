@@ -100,8 +100,16 @@ export async function createProduct(data: CreateProductDto) {
     })
 }
 
-export async function fetchProducts() {
-    return await prisma.product.findMany()
+export async function fetchProducts(page: number, limit: number) {
+    const [products, total] = await Promise.all([
+        prisma.product.findMany({
+            skip: (page - 1) * limit,
+            take: limit,
+        }),
+        prisma.product.count(),
+    ])
+
+    return { products, total }
 }
 
 export async function fetchProductByID(id: string) {
@@ -118,12 +126,23 @@ export async function fetchProductByID(id: string) {
     return product
 }
 
-export async function fetchProductsByCategoryID(id: string) {
-    return await prisma.product.findMany({
-        where: {
-            categoryId: id
-        }
-    })
+export async function fetchProductsByCategoryID(id: string, page: number, limit: number) {
+    const [products, total] = await Promise.all([
+        prisma.product.findMany({
+            where: {
+                categoryId: id
+            },
+            skip: (page - 1) * limit,
+            take: limit,
+        }),
+        prisma.product.count({
+            where: {
+                categoryId: id
+            }
+        }),
+    ])
+
+    return { products, total }
 }
 
 export async function deleteProduct(id: string) {

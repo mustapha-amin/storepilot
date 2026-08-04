@@ -2,7 +2,8 @@ import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import * as storeService from "./store.service.js";
 import { CreateCategoryDto, CreateProductDto, UpdateProductDto } from "./store.dto.js";
-import { successResponse } from "../../shared/interfaces/response.js";
+import { successResponse, paginatedResponse } from "../../shared/interfaces/response.js";
+import { paginationSchema } from "./store.validators.js";
 
 export async function createCategory(req: Request, res: Response) {
     const data = req.body as CreateCategoryDto;
@@ -48,9 +49,10 @@ export async function createProduct(req: Request, res: Response) {
 }
 
 export async function fetchProducts(req: Request, res: Response) {
-    const products = await storeService.fetchProducts();
+    const { page, limit } = paginationSchema.parse(req.query);
+    const { products, total } = await storeService.fetchProducts(page, limit);
 
-    return res.status(StatusCodes.OK).json(successResponse("Products fetched successfully", products));
+    return res.status(StatusCodes.OK).json(paginatedResponse("Products fetched successfully", products, { page, limit, total }));
 }
 
 export async function fetchProductByID(req: Request<{ id: string }>, res: Response) {
@@ -62,10 +64,11 @@ export async function fetchProductByID(req: Request<{ id: string }>, res: Respon
 
 export async function fetchProductsByCategoryID(req: Request<{ id: string }>, res: Response) {
     const { id } = req.params;
-    const category = await storeService.fetchCategoryByID(id);
-    const products = await storeService.fetchProductsByCategoryID(id);
+    const { page, limit } = paginationSchema.parse(req.query);
+    await storeService.fetchCategoryByID(id);
+    const { products, total } = await storeService.fetchProductsByCategoryID(id, page, limit);
 
-    return res.status(StatusCodes.OK).json(successResponse("Products fetched successfully", products));
+    return res.status(StatusCodes.OK).json(paginatedResponse("Products fetched successfully", products, { page, limit, total }));
 }
 
 export async function deleteProduct(req: Request<{ id: string }>, res: Response) {

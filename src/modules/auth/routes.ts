@@ -203,6 +203,6 @@ authRouter.post("/logout", authMiddleware, logout)
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
  */
-authRouter.post("/refresh", authMiddleware, refresh)
+authRouter.post("/refresh", refresh)
 
 export default authRouter
